@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>es-menu</title>
+    <link rel="stylesheet" href="../assets/css/app.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/line-awesome/dist/line-awesome/css/line-awesome.min.css">
+</head>
+
+<div id="app" :style="{ display: ui ? 'block' : 'none' }">
+
+  <div class="menu-container">
+    <button @click="toggleMode" class="mode-toggle">
+      <svg v-if="isLightMode" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="icon">
+        <circle cx="12" cy="12" r="5"></circle>
+      </svg>
+      <svg v-else xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="icon">
+        <path d="M21 12.79A9 9 0 1112.21 3a7.5 7.5 0 100 15A9 9 0 0021 12.79z"/>
+      </svg>
+      {{ isLightMode ? 'Light Mode' : 'Dark Mode' }}
+    </button>
+  
+    <div class="player-info">
+      <p class="player-name"><i class="fas fa-user"></i> {{ player.name }}</p>
+      <p class="player-active"><i class="fas fa-users"></i> Active Players: {{ player.activePlayers }}</p>
+      <p class="player-money"><i class="fas fa-wallet"></i> Money: ${{ player.money }}</p>
+      <p class="player-bank"><i class="fas fa-university"></i> Bank Balance: ${{ player.bankBalance }}</p>
+      <p class="player-crypto"><i class="fas fa-coins"></i> Crypto Balance: {{ player.cryptoBalance }} BTC</p>
+      <p class="player-job-name"><i class="fas fa-briefcase"></i> Job Name: {{ player.job.name }}</p>
+      <p class="player-job-label"><i class="fas fa-tags"></i> Job Label: {{ player.job.label }}</p>
+      <p class="player-group"><i class="fas fa-users-cog"></i> Group: {{ player.group }}</p>
+    </div>
+    <div class="logo">
+      <img src="https://r2.fivemanage.com/2P9FjNbfkvdwqJtyhr4v5/sitelogo.webp" alt="Menu Logo" />
+    </div>
+    <ul class="menu">
+      <li v-for="(item, index) in menuItems" :key="index"
+          :class="{ selected: selectedIndex === index || (selectedIndex === null && index === 0) }"
+          @click="selectItem(index)">
+        <a href="#">
+          <span class="text">{{ item.name }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div v-if="showBanList || showUnbanList" :class="['ban-list-panel', isLightMode ? 'light-mode' : 'dark-mode']"
+  :style="{ width: panelWidth + 'px', height: panelHeight + 'px', top: panelTop + 'px', left: panelLeft + 'px' }"
+  @mousedown="startDrag($event)">
+  <div class="header">
+    <span v-if="showBanList">🚫 Ban List</span>
+    <span v-if="showUnbanList">✅ Unban List</span>
+    <div class="position-buttons">
+      <button @click="moveToPosition('top-left')" aria-label="Move to Top Left">🔼</button>
+      <button @click="moveToPosition('top-right')" aria-label="Move to Top Right">➡️</button>
+      <button @click="moveToPosition('bottom-left')" aria-label="Move to Bottom Left">⬇️</button>
+    </div>
+  </div>
+  <div class="search-container">
+    <input type="text" v-model="searchQuery" placeholder="🔍 Search Players..." />
+  </div>
+  <div class="ban-unban-sections">
+    <ul class="scrollable-list">
+      <li v-for="player in (showBanList ? filteredBanList : filteredUnbanList)" :key="player.identifier" class="player-item">
+        <div class="player-info">
+          <span class="player-name">{{ player.name || 'Unknown Player' }}</span>
+          <span class="player-id">ID: {{ player.identifier }}</span>
+          <span v-if="player.reason" class="player-reason">Reason: {{ player.reason }}</span>
+        </div>
+        <button @click="togglePlayerStatus(player)" :class="showBanList ? 'ban-button' : 'unban-button'">
+          {{ showBanList ? 'BAN' : 'UNBAN' }}
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div class="eyestore-text" @click="openUrl('https://eyestore.tebex.io')">
+    🌐 eyestore.tebex.io
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+      
+  
+</div>
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script src="./assets/data.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script src="./vue.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</body>
+
+</html>

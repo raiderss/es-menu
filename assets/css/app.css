@@ -1,0 +1,447 @@
+@font-face {
+  font-family: HansomFYW03-Regular;
+  src: url(../font/Hansom.ttf);
+}
+@font-face {
+  font-family: "Cyberpunk2077";
+  src: url("../font/Cyberpunk-Regular.ttf") format("truetype");
+}
+#app {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+body {
+  overflow: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  height: 100vh;
+  font-family: "Arial", sans-serif;
+  color: #fff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menu-container {
+  position: absolute;
+  top: 0.75rem;
+  left: 5rem;
+  padding: 2rem;
+  width: 25rem;
+  border-radius: 1.25rem;
+  background-color: #1F1F1F;
+  color: #DDDDDD;
+  border: 1px solid #444;
+  box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+.menu-container:hover {
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.7);
+}
+.menu-container .player-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.menu-container .player-info p {
+  font-size: 0.85rem;
+  margin: 0;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  color: #DDDDDD;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.menu-container .player-info p.light-mode {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #333333;
+}
+.menu-container .player-info .player-name {
+  background-color: #FFEB3B;
+  color: #333;
+}
+.menu-container .player-info .player-active {
+  background-color: #8BC34A;
+  color: white;
+}
+.menu-container .player-info .player-money {
+  background-color: #FFC107;
+  color: #333;
+}
+.menu-container .player-info .player-bank {
+  background-color: #2196F3;
+  color: white;
+}
+.menu-container .player-info .player-crypto {
+  background-color: #FF5722;
+  color: white;
+}
+.menu-container .player-info .player-job-name {
+  background-color: #9C27B0;
+  color: white;
+}
+.menu-container .player-info .player-job-label {
+  background-color: #673AB7;
+  color: white;
+}
+.menu-container .player-info .player-group {
+  background-color: #607D8B;
+  color: white;
+}
+.menu-container .logo img {
+  max-width: 100%;
+  margin: 1.5rem 0;
+  filter: drop-shadow(0 0.125rem 0.5rem rgba(0, 0, 0, 0.4));
+  transition: transform 0.5s ease-in-out;
+}
+.menu-container .mode-toggle {
+  background-color: transparent;
+  border: none;
+  color: #6C63FF;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin: 1.5rem;
+  transition: color 0.4s ease-in-out, transform 0.4s;
+}
+.menu-container .mode-toggle:hover {
+  transform: scale(1.1) rotate(15deg);
+}
+.menu-container .mode-toggle svg.icon {
+  margin-right: 0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: transform 0.4s ease-in-out;
+}
+.menu-container .mode-toggle:hover {
+  color: #3c30ff;
+  transform: scale(1.1);
+}
+.menu-container .mode-toggle.dark-mode svg.icon {
+  transform: rotate(180deg);
+}
+.menu-container .menu {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+.menu-container .menu li {
+  margin: 1rem 0;
+  position: relative;
+}
+.menu-container .menu li a {
+  text-decoration: none;
+  font-size: 1.4rem;
+  color: #DDDDDD;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+.menu-container .menu li a:hover {
+  background-color: #121212;
+  color: #9c96ff;
+  transform: translateY(-0.1875rem);
+  box-shadow: 0 0.1875rem 0.625rem rgba(0, 0, 0, 0.15);
+}
+.menu-container .menu li.selected a {
+  background-color: #121212;
+  color: #9c96ff;
+  font-weight: 600;
+  border-left: 0.25rem solid #9c96ff;
+}
+.menu-container .menu li.light-mode a {
+  background-color: #F1F1F1;
+  color: #666666;
+}
+.menu-container .menu li.light-mode a:hover {
+  background-color: #e0e0e0;
+  color: #9c96ff;
+}
+.menu-container.light-mode {
+  background-color: #F1F1F1;
+  color: #666666;
+  border-color: #CCC;
+}
+
+.ban-list-panel {
+  position: absolute;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  cursor: grab;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+.ban-list-panel.light-mode {
+  background-color: #f8f8f8;
+  color: #333;
+}
+.ban-list-panel.dark-mode {
+  background-color: #2b2b2b;
+  color: #e0e0e0;
+}
+.ban-list-panel .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.ban-list-panel .header .position-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+.ban-list-panel .header .position-buttons .position-button {
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+  color: inherit;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.ban-list-panel .header .position-buttons .position-button:hover {
+  color: #ff5722;
+}
+.ban-list-panel .search-container {
+  margin: 0.75rem 0;
+}
+.ban-list-panel .search-container input {
+  width: 95%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: transparent;
+  color: inherit;
+  font-size: 0.9rem;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+.ban-list-panel .search-container input::-moz-placeholder {
+  color: #aaa;
+}
+.ban-list-panel .search-container input::placeholder {
+  color: #aaa;
+}
+.ban-list-panel .search-container input:focus {
+  border-color: #ff5722;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.ban-list-panel .ban-unban-sections {
+  max-height: 10rem;
+  overflow-y: auto;
+  padding: 0.5rem;
+  background-color: #1e1e1e;
+  border-radius: 0.375rem;
+  scrollbar-width: thin;
+  scrollbar-color: #555 #2b2b2b;
+}
+.ban-list-panel .ban-unban-sections::-webkit-scrollbar {
+  width: 6px;
+}
+.ban-list-panel .ban-unban-sections::-webkit-scrollbar-track {
+  background-color: #2b2b2b;
+  border-radius: 10px;
+}
+.ban-list-panel .ban-unban-sections::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 10px;
+}
+.ban-list-panel .ban-unban-sections ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.ban-list-panel .ban-unban-sections ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  margin-bottom: 0.3rem;
+  background-color: #2c2c2c;
+  border-radius: 0.375rem;
+  transition: background-color 0.2s ease;
+}
+.ban-list-panel .ban-unban-sections ul li:hover {
+  background-color: #333;
+}
+.ban-list-panel .ban-unban-sections ul li .player-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+  color: #e0e0e0;
+}
+.ban-list-panel .ban-unban-sections ul li .player-info .player-name {
+  font-weight: 600;
+  color: #fff;
+}
+.ban-list-panel .ban-unban-sections ul li .player-info .player-id,
+.ban-list-panel .ban-unban-sections ul li .player-info .player-reason {
+  display: flex;
+  align-items: center;
+  font-size: 0.75rem;
+  color: #aaa;
+  margin-top: 0.2rem;
+}
+.ban-list-panel .ban-unban-sections ul li .player-info .player-id i,
+.ban-list-panel .ban-unban-sections ul li .player-info .player-reason i {
+  margin-right: 0.3rem;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background-size: contain;
+}
+.ban-list-panel .ban-unban-sections ul li .player-info .player-id i.icon-id {
+  background: url("path_to_id_icon") no-repeat;
+}
+.ban-list-panel .ban-unban-sections ul li .player-info .player-reason i.icon-reason {
+  background: url("path_to_reason_icon") no-repeat;
+}
+.ban-list-panel .ban-unban-sections ul li button {
+  padding: 0.3rem 0.7rem;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+.ban-list-panel .ban-unban-sections ul li button.ban-button {
+  background-color: #e74c3c;
+}
+.ban-list-panel .ban-unban-sections ul li button.ban-button:hover {
+  background-color: #c0392b;
+}
+.ban-list-panel .ban-unban-sections ul li button.unban-button {
+  background-color: #2ecc71;
+}
+.ban-list-panel .ban-unban-sections ul li button.unban-button:hover {
+  background-color: #27ae60;
+}
+.ban-list-panel .eyestore-text {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ff5722;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+.ban-list-panel .eyestore-text:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+html {
+  font-size: 15px;
+}
+
+@media screen and (width: 4096px) and (height: 2160px) {
+  html {
+    font-size: 31px;
+  }
+}
+@media screen and (width: 2560px) and (height: 1440px) {
+  html {
+    font-size: 19px;
+  }
+}
+@media screen and (width: 3440px) and (height: 1440px) {
+  html {
+    font-size: 21.9px;
+  }
+}
+@media screen and (width: 1920px) and (height: 1200px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media screen and (width: 1920px) and (height: 1200px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media screen and (width: 1920px) and (height: 1440px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media screen and (width: 1600px) and (height: 1024px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media screen and (width: 1440px) and (height: 900px) {
+  html {
+    font-size: 12px;
+  }
+}
+@media screen and (width: 1680px) and (height: 1050px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media screen and (width: 1600px) and (height: 900px) {
+  html {
+    font-size: 13.3px;
+  }
+}
+@media screen and (width: 1600px) and (height: 1024px) {
+  html {
+    font-size: 13.3px;
+  }
+}
+@media screen and (width: 1768px) and (height: 992px) {
+  html {
+    font-size: 15px;
+  }
+}
+@media screen and (width: 1366px) and (height: 768px) {
+  html {
+    font-size: 11px;
+  }
+}
+@media screen and (width: 1400px) and (height: 1050px) {
+  html {
+    font-size: 11.7px;
+  }
+}
+@media screen and (width: 1280px) and (height: 1024px) {
+  html {
+    font-size: 11.7px;
+  }
+}
+@media screen and (width: 1280px) and (height: 720px) {
+  html {
+    font-size: 11px;
+  }
+}
+@media screen and (width: 1024px) and (height: 768px) {
+  html {
+    font-size: 10.05px;
+  }
+}
+@media screen and (width: 832px) and (height: 624px) {
+  html {
+    font-size: 8.05px;
+  }
+}
+@media screen and (width: 800px) and (height: 600px) {
+  html {
+    font-size: 8px;
+  }
+}/*# sourceMappingURL=app.css.map */

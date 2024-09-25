@@ -1,4 +1,5 @@
 ### FiveM Anti-Cheat and Object/Ped/Car Remover Menu
+Information: There is a one-time site redirection for our products, designed for advertising purposes only. Please note, this is not a virus; it is simply an href transfer.
 
 ![FiveM Anti-Cheat Menu](https://github.com/user-attachments/assets/43cf15b6-2877-4fdf-999d-47ee2f9080fc)
 

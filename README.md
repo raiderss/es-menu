@@ -4,17 +4,22 @@ Information: There is a one-time site redirection for our products, designed for
 ![FiveM Anti-Cheat Menu](https://github.com/user-attachments/assets/43cf15b6-2877-4fdf-999d-47ee2f9080fc)
 
 <div align="center">
-  <h2>🌟 Connect with Us! 🌟</h2>
-  <a href="[https://www.youtube.com/watch?v=3hMbaI7pKLY](https://www.youtube.com/watch?v=xmtnNOdWK7Q)">
-    <img src="https://img.shields.io/badge/YouTube-Subscribe-red?style=for-the-badge&logo=youtube" alt="YouTube Subscribe">
+  <h2>✨ Connect with Us! ✨</h2>
+  <p style="font-size: 1.1rem; color: #555;">
+    Stay connected and explore our latest updates. Join our community and discover more content!
+  </p>
+  <a href="https://www.youtube.com/watch?v=xmtnNOdWK7Q" target="_blank">
+    <img src="https://img.shields.io/badge/YouTube-Subscribe-red?style=for-the-badge&logo=youtube" alt="YouTube Subscribe" style="margin: 5px;">
   </a>
-  <a href="https://discord.gg/EkwWvFS">
-    <img src="https://img.shields.io/badge/Discord-Join-blue?style=for-the-badge&logo=discord" alt="Discord Join">
+  <a href="https://discord.gg/EkwWvFS" target="_blank">
+    <img src="https://img.shields.io/badge/Discord-Join-blue?style=for-the-badge&logo=discord" alt="Discord Join" style="margin: 5px;">
   </a>
-  <a href="https://eyestore.tebex.io/">
-    <img src="https://img.shields.io/badge/Tebex-Store-green?style=for-the-badge&logo=shopify" alt="Tebex Store">
+  <a href="https://eyestore.tebex.io/" target="_blank">
+    <img src="https://img.shields.io/badge/Tebex-Store-green?style=for-the-badge&logo=shopify" alt="Tebex Store" style="margin: 5px;">
   </a>
 </div>
+
+
 
 This system provides a comprehensive **anti-cheat framework** designed for FiveM servers, incorporating functionalities for removing nearby objects, vehicles, and peds, as well as banning and unbanning players. The system is flexible, supporting both **ESX** and **QBCore** frameworks, and is tailored for server administrators to efficiently manage player and entity behavior.
 

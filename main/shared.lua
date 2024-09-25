@@ -1,6 +1,6 @@
 Config = {
     Framework = 'QBCore',  -- QBCore or ESX or OLDQBCore or NewESX
-    Webhook = 'https://discord.com/api/webhooks/985939034775908382/Zsek_WbmUIjWX57jbNc4Y8YFNY0TXbNrGdRvhDE-tcaExUe7PrBpW7x-9OfeevXealz_',
+    Webhook = '',
     Logo = 'https://r2.fivemanage.com/2P9FjNbfkvdwqJtyhr4v5/sitelogo.webp',
     Admin = {
         'USF03106' 

@@ -16,17 +16,32 @@ end
 
 RegisterServerEvent('server:deleteNearbyVehiclesForAll')
 AddEventHandler('server:deleteNearbyVehiclesForAll', function(radius)
-    TriggerClientEvent('client:deleteVehiclesInRadius', -1, radius)
+    local source = source
+    if not notAdmin(source) then
+        DropPlayer(source, "You are not authorized to perform this operation.")
+    else
+        TriggerClientEvent('client:deleteVehiclesInRadius', -1, radius)
+    end
 end)
 
 RegisterServerEvent('server:deleteNearbyObjectsForAll')
 AddEventHandler('server:deleteNearbyObjectsForAll', function(radius)
-    TriggerClientEvent('client:deleteObjectsInRadius', -1, radius)
+    local source = source
+    if not notAdmin(source) then
+        DropPlayer(source, "You are not authorized to perform this operation.")
+    else
+        TriggerClientEvent('client:deleteObjectsInRadius', -1, radius)
+    end
 end)
 
 RegisterServerEvent('server:deleteNearbyPedsForAll')
 AddEventHandler('server:deleteNearbyPedsForAll', function(radius)
-    TriggerClientEvent('client:deletePedsInRadius', -1, radius)
+    local source = source
+    if not notAdmin(source) then
+        DropPlayer(source, "You are not authorized to perform this operation.")
+    else
+        TriggerClientEvent('client:deletePedsInRadius', -1, radius)
+    end
 end)
 
 
